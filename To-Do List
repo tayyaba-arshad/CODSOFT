@@ -37,7 +37,7 @@ def track_tasks():
     messagebox.showinfo("Task Tracking", message)
 
 
-# Function to clear all completed tasks
+# Function to clear all tasks
 def clear_list():
     list_box.delete(0, tk.END)
     global tasks
