@@ -1,0 +1,72 @@
+from tkinter import *
+
+def click(number):
+    value = user_input.get()
+    user_input.delete(0, END)
+    user_input.insert(0, str(value) + str(number))
+
+def clear():
+    user_input.delete(0, END)
+
+def equal():
+    try:
+        result = eval(user_input.get())
+        user_input.delete(0, END)
+        user_input.insert(0, str(result))
+    except:
+        user_input.delete(0, END)
+        user_input.insert(0, "Error")
+
+root = Tk()
+root.title("Simple Calculator")
+
+custom_theme = {
+    "background": "plum",
+    "foreground": "black",
+    "background_button": "purple",
+    "foreground_button": "black"
+}
+
+root.tk_setPalette(background=custom_theme["background"],
+                   foreground=custom_theme["foreground"],
+                   activeBackground=custom_theme["background_button"],
+                   activeForeground=custom_theme["foreground_button"])
+
+user_input = Entry(root, width=20, borderwidth=5, font=("Arial", 20),bg="white")
+user_input.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+
+button_1 = Button(root, text="1", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(1))
+button_2 = Button(root, text="2", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(2))
+button_3 = Button(root, text="3", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(3))
+button_4 = Button(root, text="4", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(4))
+button_5 = Button(root, text="5", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(5))
+button_6 = Button(root, text="6", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(6))
+button_7 = Button(root, text="7", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(7))
+button_8 = Button(root, text="8", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(8))
+button_9 = Button(root, text="9", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(9))
+button_0 = Button(root, text="0", font=("Ariel", 12), padx=40, pady=20, command=lambda: click(0))
+add_button = Button(root, text="+", font=("Ariel", 12), padx=40, pady=20, command=lambda: click("+"))
+subtract_button = Button(root, text="-", font=("Ariel", 12), padx=40, pady=20, command=lambda: click("-"))
+multiply_button = Button(root, text="*", font=("Ariel", 12), padx=40, pady=20, command=lambda: click("*"))
+divide_button = Button(root, text="/", font=("Ariel", 12), padx=40, pady=20, command=lambda: click("/"))
+equal_button = Button(root, text="=", font=("Ariel", 12), padx=40, pady=20, command=equal)
+clear_button = Button(root, text="C", font=("Ariel", 12), padx=40, pady=20, command=clear)
+
+button_1.grid(row=3, column=0)
+button_2.grid(row=3, column=1)
+button_3.grid(row=3, column=2)
+button_4.grid(row=2, column=0)
+button_5.grid(row=2, column=1)
+button_6.grid(row=2, column=2)
+button_7.grid(row=1, column=0)
+button_8.grid(row=1, column=1)
+button_9.grid(row=1, column=2)
+button_0.grid(row=4, column=0)
+clear_button.grid(row=4, column=1)
+equal_button.grid(row=4, column=2)
+add_button.grid(row=1, column=3)
+subtract_button.grid(row=2, column=3)
+multiply_button.grid(row=3, column=3)
+divide_button.grid(row=4, column=3)
+
+root.mainloop()
